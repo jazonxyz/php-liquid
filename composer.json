@@ -1,8 +1,8 @@
 {
-    "name": "liquid/liquid",
+    "name": "jazonxyz/liquid",
     "description": "Liquid template engine for PHP",
 	"keywords": ["liquid", "template"],
-	"homepage": "https://github.com/kalimatas/php-liquid",
+	"homepage": "https://github.com/jazonxyz/php-liquid",
     "license": "MIT",
 	"type": "library",
     "authors": [
@@ -11,12 +11,15 @@
             "email": "kalimatas@gmail.com",
 			"homepage": "http://guzalexander.com"
         },
-		{
-			"name": "Harald Hanek"
-		},
-		{
-			"name": "Mateo Murphy"
-		}
+				{
+					"name": "Harald Hanek"
+				},
+				{
+					"name": "Mateo Murphy"
+				},
+				{
+					"name": "Jazon Yamamoto"
+				}
     ],
     "require": {
 		"php": ">= 5.3"
