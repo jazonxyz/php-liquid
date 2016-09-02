@@ -187,11 +187,11 @@ class Context
 			return $matches[1];
 		}
 
-		if (preg_match('/^(\d+)$/', $key, $matches)) {
+		if (preg_match('/^(-?\d+)$/', $key, $matches)) {
 			return $matches[1];
 		}
 
-		if (preg_match('/^(\d[\d\.]+)$/', $key, $matches)) {
+		if (preg_match('/^(-?\d[\d\.]+)$/', $key, $matches)) {
 			return $matches[1];
 		}
 
@@ -239,6 +239,17 @@ class Context
 		// Support [0] style array indicies
 		if (preg_match("|\[[0-9]+\]|", $key)) {
 			$key = preg_replace("|\[([0-9]+)\]|", ".$1", $key);
+		}
+		
+		// Support names as array indicies
+		if (preg_match("|\[(".Liquid::get('ALLOWED_VARIABLE_CHARS')."+)\]|", $key, $matches)) {
+			// this is probably a variable
+			$var = $this->variable($matches[1]);
+			if (is_null($var) || !is_string($var)) { // is not a variable
+				$key = preg_replace("|\[(".Liquid::get('ALLOWED_VARIABLE_CHARS')."+)\]|", ".$1", $key);	
+			} else {
+				$key = preg_replace("|\[(".Liquid::get('ALLOWED_VARIABLE_CHARS')."+)\]|", ".".$var), $key);
+			}
 		}
 
 		$parts = explode(Liquid::get('VARIABLE_ATTRIBUTE_SEPARATOR'), $key);
