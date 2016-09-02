@@ -248,7 +248,7 @@ class Context
 			if (is_null($var) || !is_string($var)) { // is not a variable
 				$key = preg_replace("|\[(".Liquid::get('ALLOWED_VARIABLE_CHARS')."+)\]|", ".$1", $key);	
 			} else {
-				$key = preg_replace("|\[(".Liquid::get('ALLOWED_VARIABLE_CHARS')."+)\]|", ".".$var), $key);
+				$key = preg_replace("|\[(".Liquid::get('ALLOWED_VARIABLE_CHARS')."+)\]|", ".".$var, $key);
 			}
 		}
 
